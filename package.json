@@ -5,7 +5,11 @@
     "main": "src/app.js",
     "dependencies": {
         "config": "^2.0.1",
+        "express": "^4.16.4",
+        "express-handlebars": "^3.0.0",
         "jquery": "^3.3.1",
+        "mustache": "^3.0.0",
+        "mustache-express": "^1.2.8",
         "nodemon": "^1.18.5",
         "object-resolve-path": "^1.1.1",
         "sequelize": "^4.41.0",

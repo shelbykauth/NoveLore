@@ -4,4 +4,4 @@ init.initialize();
 
 
 //const data = require('./data/index.js');
-const server = require('./routing/index.js');
+const server = require('./routing/server.js');
