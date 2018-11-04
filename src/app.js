@@ -1,12 +1,7 @@
-const sql = require('sqlite3');
-const path = require('path');
-const fs = require('fs');
+const init = require('./initializer/initializer.js');
 
-global.appRoot = path.join(path.resolve(__dirname), "\\..\\");
-if (!fs.existsSync(appRoot + "data")) {
-    fs.mkdirSync(appRoot + "data");
-}
-console.log(appRoot);
+init.initialize();
 
-const data = require('./data/index.js');
+
+//const data = require('./data/index.js');
 const server = require('./routing/index.js');

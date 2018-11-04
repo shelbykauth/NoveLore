@@ -2,9 +2,9 @@ const http = require('http');
 const processor = require('./processor.js');
 const fs = require('fs');
 
-const webPath = 'src/public/';
-const hostname = '127.0.0.1';
-const port = 3000;
+const webPath = appRoot + '/src/public/';
+const hostname = config.has('http.hostname') ? config.get('http.hostname') : '127.0.0.1';
+const port = config.has('http.port') ? config.get('http.port') : 3000;
 const application = {};
 const session = { "application": application };
 
