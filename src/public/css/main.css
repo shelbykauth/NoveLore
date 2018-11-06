@@ -1,0 +1,5 @@
+#nl_logger span[data-from='server']::before {
+    content: "Message From Server: ";
+    font-weight: bold;
+    color: rgb(0, 128, 0);
+}
