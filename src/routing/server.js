@@ -14,33 +14,33 @@ const viewsDir = path.join(appRoot, "/src/views");
 const partDir = path.join(viewsDir, "/partials/");
 const layoutDir = path.join(viewsDir, "/layouts");
 
-const server = express();
-server.listen(port, hostname, () => {
+const httpServer = express();
+httpServer.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
-myWebsocket.runOn(server);
-server.use(fileUpload());
-server.use(express.static(staticPath));
+myWebsocket.runOn(httpServer);
+httpServer.use(fileUpload());
+httpServer.use(express.static(staticPath));
 // Register '.mustache' extension with The Mustache Express
-server.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', layoutsDir: layoutDir, partialsDir: partDir }));
-server.set('view engine', 'hbs');
-server.set('views', viewsDir);
+httpServer.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', layoutsDir: layoutDir, partialsDir: partDir }));
+httpServer.set('view engine', 'hbs');
+httpServer.set('views', viewsDir);
 
-server.get(
+httpServer.get(
     ["/", "/index", "/home"],
     (req, res, next) => {
         res.render('index.hbs', { Title: "NoveLore" });
     }
 );
 
-server.get(
+httpServer.get(
     ["/Stage1"],
     (req, res, next) => {
         res.render('stage1.hbs', { Title: "Stage 1" });
     }
 )
 
-server.post(
+httpServer.post(
     ["/files"],
     (req, res, next) => {
         processor.inputFiles(req).then(
@@ -54,10 +54,7 @@ server.post(
         )
     }
 )
-
-
-
-/* 404 Must be at Bottom */
-server.use(function(req, res, next) {
+httpServer /* 404 Must be at Bottom */
+httpServer.use(function(req, res, next) {
     res.render('404.hbs', { Title: "404" });
 });
