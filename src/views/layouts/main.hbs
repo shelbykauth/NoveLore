@@ -4,7 +4,17 @@
 <head>
     <title>{{Title}}</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    {{PageScript}}
+    <script src="js/main.js"></script>
+    {{#if slug}}
+    <script src="js/page/{{slug}}.js"></script>
+    {{/if}}
+    {{#each PageScripts}}
+    <script src="{{this}}"></script>
+    {{/each}}
+    <link rel="stylesheet" href="css/main.css">
+    {{#each PageCSS}}
+    <link rel="stylesheet" href="{{this}}">
+    {{/each}}
 </head>
 
 <body>
