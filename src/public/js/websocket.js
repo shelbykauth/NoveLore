@@ -8,11 +8,16 @@ function startWS() {
     if (!window.WebSocket) return null;
 
     var url = window.location;
-    var connection = new WebSocket(url.origin.replace(url.protocol, "ws:"));
+    var connection = new WebSocket(url.origin.replace(url.protocol, "ws:").replace(url.port, "1337"));
 
     connection.onopen = () => {};
-    connection.onclose = () => {};
-    connection.onerror = () => {};
+    connection.onclose = (close) => {
+        setTimeout(startWS, 200);
+        console.log(close);
+    };
+    connection.onerror = (err) => {
+        console.log(err);
+    };
     connection.onmessage = (msg) => {
         try {
             var json = JSON.parse(msg.data);
@@ -29,6 +34,7 @@ function startWS() {
         }
     };
 
+    window.WebSocketConnection = connection;
     return connection;
 }
 
@@ -40,5 +46,5 @@ $(document).ready(() => {
         logger.data("oldVal", newVal);
         logger.append("<p><span data-from='server'></span> " + newVal + "</p>");
     });
-    window.WebSocketConnection = startWS();
+    startWS();
 });
