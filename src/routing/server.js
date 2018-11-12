@@ -1,24 +1,37 @@
 const express = require('express');
 const path = require('path');
+const http = require('http');
 const exphbs = require('express-handlebars');
 const fileUpload = require('express-fileupload');
-const myWebsocket = require('./websocket.js');
 
+const myWebsocket = require('./websocket.js');
 const processor = require('../processor/processor.js');
+const triggers = require('./actions.js');
 
 const staticPath = path.join(appRoot, "/src/public");
 const hostname = config.has('http.hostname') ? config.get('http.hostname') : '127.0.0.1';
 const port = config.has('http.port') ? config.get('http.port') : 3000;
+const socketPort = 1337;
 
 const viewsDir = path.join(appRoot, "/src/views");
 const partDir = path.join(viewsDir, "/partials/");
 const layoutDir = path.join(viewsDir, "/layouts");
 
 const httpServer = express();
-httpServer.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+const socketServer = http.createServer();
+
+module.exports = {
+    sendMessageToClient: myWebsocket.sendMessage,
+    sendLogToClient: myWebsocket.sendLog,
+}
+
+socketServer.listen(socketPort, hostname, () => {
+    console.log(`Socket Server running at ws://${hostname}:${socketPort}/`);
 });
-myWebsocket.runOn(httpServer);
+httpServer.listen(port, hostname, () => {
+    console.log(`Express Server running at http://${hostname}:${port}/`);
+});
+myWebsocket.runOn(socketServer);
 httpServer.use(fileUpload());
 httpServer.use(express.static(staticPath));
 // Register '.mustache' extension with The Mustache Express

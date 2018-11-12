@@ -3,3 +3,17 @@
     font-weight: bold;
     color: rgb(0, 128, 0);
 }
+
+output#nl_logger {
+    background-color: #ccc;
+    border: 2px ridge;
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+
+output#nl_logger span.time:after {
+    content: "\000A";
+    white-space: pre;
+}

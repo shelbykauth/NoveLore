@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{Title}}</title>
+    <title>NoveLore | {{Title}}</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/main.js"></script>
     {{#if slug}}
@@ -20,15 +20,17 @@
 </head>
 
 <body>
-    <header>
-        <h1>{{Title}}</h1>
-    </header>
-    <main>
-        {{{body}}}
-    </main>
-    <footer>
-        {{> Footer}}
-    </footer>
+    <div class='row container'>
+        <header class="col col-md-10 col-md-offset-1 text-center">
+            <h1>{{Title}}</h1>
+        </header>
+        <main class="col col-md-10 col-md-offset-1">
+            {{{body}}}
+        </main>
+        <footer class="col col-md-10 col-md-offset-1">
+            {{> Footer}}
+        </footer>
+    </div>
 </body>
 
 </html>

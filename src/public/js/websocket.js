@@ -22,15 +22,18 @@ function startWS() {
         try {
             var json = JSON.parse(msg.data);
         } catch (e) {
-            console.log("Invalid JSON", msg.data);
+            console.log("Invalid JSON", msg.data, msg);
             return;
         }
 
         switch (json.type) {
             case "log":
                 var logger = $("#nl_logger");
-                logger.val(json.msg).trigger('update');
+                console.log(json.msg);
+                logger.data("newVal", json.msg).trigger('update');
                 break;
+            default:
+                console.log(json);
         }
     };
 
@@ -39,12 +42,13 @@ function startWS() {
 }
 
 $(document).ready(() => {
-    $("#nl_logger").on("update", () => {
+    $("#nl_logger").on("update", function() {
         var logger = $(this);
-        var newVal = logger.val();
+        console.log(logger);
+        var newVal = logger.data("newVal");
         if (newVal == logger.data("oldVal")) return;
         logger.data("oldVal", newVal);
-        logger.append("<p><span data-from='server'></span> " + newVal + "</p>");
+        logger.append("<p><span data-from='server'></span> " + newVal.replace(/\\\\/g, "/") + "</p>");
     });
     startWS();
 });

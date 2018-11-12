@@ -13,9 +13,13 @@ function initialize() {
     console.log("appRoot: " + appRoot);
     console.log("dataRoot: " + dataRoot);
 
+    verifyDirectories();
+}
+
+function verifyDirectories() {
     checkDir(dataRoot);
+    checkDir(path.join(dataRoot, "/cleared"));
     checkDir(path.join(dataRoot, "/input/"));
-    checkDir(path.join(dataRoot, "/input/cleared"));
     checkDir(path.join(dataRoot, "/output/"));
     checkDir(path.join(dataRoot, "/output/scenes"));
     checkDir(path.join(dataRoot, "/output/chapters"));
@@ -38,4 +42,7 @@ function checkDir(path) {
 }
 module.exports = {
     initialize: initialize,
+    verifyDirectories: verifyDirectories,
 }
+
+global.initializer = module.exports;

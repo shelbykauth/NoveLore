@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const shortid = require('shortid');
-const unzip = require('unzip');
+
+const inputFiles = require("./takeInputs.js");
 
 function processRawInput() {
     var InputDir = path.join(dataRoot, "/input/");
@@ -37,4 +38,10 @@ function processFile(relPath) {
 
 function processNextFile() {
 
+}
+
+module.exports = {
+    inputFiles: inputFiles.takeInputs,
+    unzip: inputFiles.unzip,
+    break: inputFiles.breakInputs,
 }
