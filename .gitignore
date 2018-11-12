@@ -13,6 +13,7 @@ pids
 
 # The package in the library
 node_modules
+package-lock.json
 
 #user data
 /data
