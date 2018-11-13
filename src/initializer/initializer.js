@@ -1,9 +1,11 @@
 const path = require('path');
 const fs = require('fs');
 const config = require('config');
+const utilities = require('./../utilities');
 
 function initialize() {
     global.config = config;
+    global.utilities = utilities;
     global.appRoot = path.join(path.resolve(__dirname), "/../../");
     if (!config.has("dataRoot")) {
         global.dataRoot = path.join(appRoot, "/data/");
