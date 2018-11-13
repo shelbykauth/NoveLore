@@ -4,6 +4,7 @@
     "description": "Parses a novel into scenes and helps you organize it",
     "main": "src/app.js",
     "dependencies": {
+        "buffer-split": "^1.0.0",
         "config": "^2.0.1",
         "express": "^4.16.4",
         "express-fileupload": "^1.0.0",
