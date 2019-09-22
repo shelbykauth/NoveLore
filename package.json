@@ -1,35 +1,71 @@
 {
-    "name": "novelore",
-    "version": "0.0.0",
-    "description": "Parses a novel into scenes and helps you organize it",
-    "main": "src/app.js",
-    "dependencies": {
-        "buffer-split": "^1.0.0",
-        "config": "^2.0.1",
-        "event-stream": "^3.3.4",
-        "express": "^4.16.4",
-        "express-fileupload": "^1.0.0",
-        "express-handlebars": "^3.0.0",
-        "formidable": "^1.2.1",
-        "jquery": "^3.3.1",
-        "jsdom": "^13.0.0",
-        "nodemon": "^1.18.5",
-        "object-resolve-path": "^1.1.1",
-        "sequelize": "^4.41.0",
-        "shortid": "^2.2.13",
-        "sqlite3": "^4.0.3",
-        "unzipper": "^0.9.4",
-        "websocket": "^1.0.28"
+  "name": "novelore",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "register-service-worker": "^1.6.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-plugin-pwa": "^3.11.0",
+    "@vue/cli-plugin-unit-mocha": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.1.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "prettier": "^1.18.2",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "Writing",
-        "Novel",
-        "Helper"
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
     ],
-    "author": "Shelby Kauth",
-    "license": "ISC"
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      }
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
