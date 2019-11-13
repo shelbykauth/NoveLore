@@ -3,8 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm run serve --prefix ./webapp"
+    "test:client": "npm run test --prefix ./webapp",
+    "test:api": "npm run test --prefix ./api",
+    "serve:client": "npm run serve --prefix ./webapp",
+    "serve:api": "npm run serve --prefix ./api",
+    "build:client": "npm run build --prefix ./webapp",
+    "build:api": "npm run build --prefix ./api",
+    "install:client": "npm install --prefix ./webapp",
+    "install:api": "npm install --prefix ./api",
+    "install": "npm run install:client && npm run install:api"
   },
   "repository": {
     "type": "git",
